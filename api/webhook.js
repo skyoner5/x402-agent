@@ -24,8 +24,9 @@ module.exports = async (req, res) => {
     await x402Client.post('https://api.x402.jobs/wurk/post', {
       text: `Autonomous payment success! SOL is $${stats.data.price}.`
     });
+// Change this line:
+res.status(402).send("402 Payment Required - x402 Agent Active");
 
-    res.status(200).json({ success: true });
   } catch (err) {
     console.error(err); // This will show up in your Vercel logs!
     res.status(500).json({ error: err.message });
